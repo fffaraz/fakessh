@@ -14,3 +14,5 @@ docker logs -f fakessh
 
 * [sshesame](https://github.com/jaksi/sshesame) - A fake SSH server that lets everyone in and logs their activity.
 * [ssh-chat](https://github.com/shazow/ssh-chat) - Custom SSH server written in Go. Instead of a shell, you get a chat prompt.
+* [gliderlabs/ssh](https://github.com/gliderlabs/ssh) - Easy SSH servers in Golang
+* [gliderlabs/sshfront](https://github.com/gliderlabs/sshfront) - Programmable SSH frontend
