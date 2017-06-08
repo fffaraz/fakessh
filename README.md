@@ -21,3 +21,4 @@ docker logs -f fakessh
 * [gliderlabs/sshfront](https://github.com/gliderlabs/sshfront) - Programmable SSH frontend.
 * [desaster/kippo](https://github.com/desaster/kippo) - Kippo - SSH Honeypot.
 * [micheloosterhof/cowrie](https://github.com/micheloosterhof/cowrie) - Cowrie SSH/Telnet Honeypot.
+* [fzerorubigd/go0r](https://github.com/fzerorubigd/go0r) - A simple ssh honeypot in golang.
