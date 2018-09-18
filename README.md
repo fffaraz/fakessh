@@ -26,3 +26,4 @@ docker logs -f fakessh
 * [x0rz/ssh-honeypot](https://github.com/x0rz/ssh-honeypot) - Fake sshd that logs ip addresses, usernames, and passwords.
 * [tnich/honssh](https://github.com/tnich/honssh) - HonSSH is designed to log all SSH communications between a client and server.
 * [Learn from your attackers - SSH HoneyPot](https://www.robertputt.co.uk/learn-from-your-attackers-ssh-honeypot.html)
+* [cowrie](https://github.com/cowrie/cowrie) - Cowrie SSH/Telnet Honeypot.
