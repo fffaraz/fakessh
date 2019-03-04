@@ -1,5 +1,5 @@
 # FakeSSH
-A dockerized fake SSH server written in Go that logs login attempts. The password authentication fails anyway so no honeypot access is given to the attacker.
+A dockerized fake SSH server honeypot written in Go that logs login attempts. The password authentications always fail anyway so no terminal access is given to the attacker.
 
 ```
 docker run -it --rm -p 22:22 fffaraz/fakessh
