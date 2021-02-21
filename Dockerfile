@@ -1,9 +1,7 @@
-FROM golang:alpine
-MAINTAINER Faraz Fallahi <fffaraz@gmail.com>
+FROM golang:alpine AS builder
+RUN apk add --update git && go get github.com/fffaraz/fakessh
+
+FROM alpine:latest
+COPY --from=builder /go/bin/fakessh /usr/local/bin
 EXPOSE 22
 ENTRYPOINT ["fakessh"]
-RUN \
-	apk add --update --no-cache git && \
-	go get github.com/fffaraz/fakessh && \
-	apk del git pcre expat libcurl libssh2 && \
-	rm -rf /go/pkg /go/src /var/cache/apk/*
