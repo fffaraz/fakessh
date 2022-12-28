@@ -1,7 +1,9 @@
 FROM golang:alpine AS builder
-RUN apk add --update git && go get github.com/fffaraz/fakessh
+WORKDIR /app
+COPY . .
+RUN CGO_ENABLED=0 go build -ldflags="-w -s" .
 
-FROM alpine:latest
-COPY --from=builder /go/bin/fakessh /usr/local/bin
+FROM scratch
+COPY --from=builder /app/fakessh /fakessh
 EXPOSE 22
-ENTRYPOINT ["fakessh"]
+ENTRYPOINT ["/fakessh"]
