@@ -6,6 +6,7 @@ import (
 	"errors"
 	"log"
 	"net"
+	"os"
 
 	"golang.org/x/crypto/ssh"
 )
@@ -13,6 +14,16 @@ import (
 var errPassword = errors.New("password authentication failed")
 
 func main() {
+	if len(os.Args) > 1 {
+		logPath := os.Args[1]
+		logFile, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer logFile.Close()
+		log.SetOutput(logFile)
+	}
+
 	log.SetFlags(log.LstdFlags | log.Lmicroseconds)
 
 	serverConfig := &ssh.ServerConfig{
