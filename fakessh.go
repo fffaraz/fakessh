@@ -12,6 +12,15 @@ import (
 )
 
 var errPassword = errors.New("password authentication failed")
+var serverVersions = []string{
+	"SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.3",
+	"SSH-2.0-OpenSSH_7.2p2 Ubuntu-4ubuntu2.10",
+	"SSH-2.0-OpenSSH_8.4p1 Debian-2~bpo10+1",
+	"SSH-2.0-OpenSSH_8.4p1 Debian-5+deb11u1",
+	"SSH-2.0-OpenSSH_6.7p1 Debian-5+deb8u3",
+	"SSH-2.0-OpenSSH_8.0",
+	"SSH-2.0-OpenSSH_7.4",
+}
 
 func main() {
 	if len(os.Args) > 1 {
@@ -29,7 +38,7 @@ func main() {
 	serverConfig := &ssh.ServerConfig{
 		MaxAuthTries:     6,
 		PasswordCallback: passwordCallback,
-		ServerVersion:    "SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.3",
+		ServerVersion:    serverVersions[0],
 	}
 
 	privateKey, _ := rsa.GenerateKey(rand.Reader, 2048)
