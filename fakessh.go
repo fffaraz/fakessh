@@ -11,21 +11,23 @@ import (
 	"golang.org/x/crypto/ssh"
 )
 
-var errPassword = errors.New("password authentication failed")
-var serverVersions = []string{
-	"SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.3",
-	"SSH-2.0-OpenSSH_7.2p2 Ubuntu-4ubuntu2.10",
-	"SSH-2.0-OpenSSH_8.4p1 Debian-2~bpo10+1",
-	"SSH-2.0-OpenSSH_8.4p1 Debian-5+deb11u1",
-	"SSH-2.0-OpenSSH_6.7p1 Debian-5+deb8u3",
-	"SSH-2.0-OpenSSH_8.0",
-	"SSH-2.0-OpenSSH_7.4",
-}
+var (
+	errBadPassword = errors.New("permission denied")
+	serverVersions = []string{
+		"SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.3",
+		"SSH-2.0-OpenSSH_6.7p1 Debian-5+deb8u3",
+		"SSH-2.0-OpenSSH_7.2p2 Ubuntu-4ubuntu2.10",
+		"SSH-2.0-OpenSSH_7.4",
+		"SSH-2.0-OpenSSH_8.0",
+		"SSH-2.0-OpenSSH_8.4p1 Debian-2~bpo10+1",
+		"SSH-2.0-OpenSSH_8.4p1 Debian-5+deb11u1",
+	}
+)
 
 func main() {
 	if len(os.Args) > 1 {
 		logPath := os.Args[1]
-		logFile, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+		logFile, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -63,7 +65,7 @@ func main() {
 
 func passwordCallback(conn ssh.ConnMetadata, password []byte) (*ssh.Permissions, error) {
 	log.Println(conn.RemoteAddr(), string(conn.ClientVersion()), conn.User(), string(password))
-	return nil, errPassword
+	return nil, errBadPassword
 }
 
 func handleConn(conn net.Conn, serverConfig *ssh.ServerConfig) {

@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  fakessh:
+    build: .
+    image: fffaraz/fakessh:latest
+    restart: always
+    network_mode: host
+    container_name: fakessh
+    command: /log/fakessh.log
+    volumes:
+      - ./volumes/fakessh:/log
