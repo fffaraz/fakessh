@@ -8,6 +8,13 @@ Password authentications always fail so no terminal access is given to the attac
 ## Quick Start
 
 ```
+go install github.com/fffaraz/fakessh@latest
+fakessh [optional-log-file]
+```
+
+OR
+
+```
 docker run -it --rm -p 22:22 fffaraz/fakessh
 ```
 
