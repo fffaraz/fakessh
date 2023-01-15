@@ -7,6 +7,6 @@ services:
     restart: always
     network_mode: host
     container_name: fakessh
-    command: /log/fakessh.log
+    command: /log
     volumes:
       - ./volumes/fakessh:/log

@@ -9,7 +9,7 @@ Password authentications always fail so no terminal access is given to the attac
 
 ```
 go install github.com/fffaraz/fakessh@latest
-fakessh [optional-log-file]
+fakessh [optional-log-directory]
 ```
 
 OR

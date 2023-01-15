@@ -4,9 +4,11 @@ import (
 	"crypto/rand"
 	"crypto/rsa"
 	"errors"
+	"fmt"
 	"log"
 	"net"
 	"os"
+	"time"
 
 	"golang.org/x/crypto/ssh"
 )
@@ -26,10 +28,11 @@ var (
 
 func main() {
 	if len(os.Args) > 1 {
-		logPath := os.Args[1]
+		logPath := fmt.Sprintf("%s/fakessh-%s.log", os.Args[1], time.Now().Format("2006-01-02-15-04-05-000"))
 		logFile, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
 		if err != nil {
-			log.Fatal(err)
+			log.Println("Failed to open log file:", logPath, err)
+			return
 		}
 		defer logFile.Close()
 		log.SetOutput(logFile)
@@ -49,7 +52,8 @@ func main() {
 
 	listener, err := net.Listen("tcp", ":22")
 	if err != nil {
-		log.Fatal("Failed to listen:", err)
+		log.Println("Failed to listen:", err)
+		return
 	}
 	defer listener.Close()
 
@@ -57,7 +61,7 @@ func main() {
 		conn, err := listener.Accept()
 		if err != nil {
 			log.Println("Failed to accept:", err)
-			continue
+			break
 		}
 		go handleConn(conn, serverConfig)
 	}
