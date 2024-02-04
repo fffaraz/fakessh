@@ -1,4 +1,4 @@
-module fakessh
+module github.com/fffaraz/fakessh
 
 go 1.21
 
