@@ -70,6 +70,7 @@ func main() {
 
 func passwordCallback(conn ssh.ConnMetadata, password []byte) (*ssh.Permissions, error) {
 	log.Println(conn.RemoteAddr(), string(conn.ClientVersion()), conn.User(), string(password))
+	time.Sleep(100 * time.Millisecond)
 	return nil, errBadPassword
 }
 
