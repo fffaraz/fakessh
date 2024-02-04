@@ -9,6 +9,7 @@ Password authentications always fail so no terminal access is given to the attac
 
 ```
 go install github.com/fffaraz/fakessh@latest
+sudo setcap 'cap_net_bind_service=+ep' ~/go/bin/fakessh
 fakessh [optional-log-directory]
 ```
 
