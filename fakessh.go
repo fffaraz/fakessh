@@ -23,6 +23,7 @@ var (
 		"SSH-2.0-OpenSSH_8.0",
 		"SSH-2.0-OpenSSH_8.4p1 Debian-2~bpo10+1",
 		"SSH-2.0-OpenSSH_8.4p1 Debian-5+deb11u1",
+		"SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.6",
 	}
 )
 
