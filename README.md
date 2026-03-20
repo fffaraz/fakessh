@@ -3,8 +3,6 @@
 A dockerized honeypot SSH server written in Go to log login attempts.
 Password authentications always fail so no terminal access is given to the attacker.
 
-[![](http://dockeri.co/image/fffaraz/fakessh)](https://hub.docker.com/r/fffaraz/fakessh)
-
 ## Quick Start
 
 ```
@@ -16,13 +14,13 @@ fakessh [optional-log-directory]
 OR
 
 ```
-docker run -it --rm -p 22:22 fffaraz/fakessh
+docker run -it --rm -p 22:22 ghcr.io/fffaraz/fakessh
 ```
 
 OR
 
 ```
-docker run -d --restart=always -p 22:22 --name fakessh fffaraz/fakessh
+docker run -d --restart=always -p 22:22 --name fakessh ghcr.io/fffaraz/fakessh
 docker logs -f fakessh
 ```
 
